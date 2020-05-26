@@ -1,22 +1,29 @@
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  document.querySelector('#new-task').onsubmit = () => {
+    // By default, submit button is disabled
+    document.querySelector('#submit').disabled = true;
 
-      // Create new item for list
-      const li = document.createElement('li');
-      li.innerHTML = document.querySelector('#task').value;
+    // Enable button only if there is text in the input field
+    document.querySelector('#task').onkeyup = () => {
+        document.querySelector('#submit').disabled = false;
+    };
 
-      // Add new item to task list
-      document.querySelector('#tasks').append(li);
+    document.querySelector('#new-task').onsubmit = () => {
 
-      // Clear input field
-      document.querySelector('#task').value = '';
+        // Create new item for list
+        const li = document.createElement('li');
+        li.innerHTML = document.querySelector('#task').value;
 
-      // Stop form from submitting
-      return false;
-  };
+        // Add new item to task list
+        document.querySelector('#tasks').append(li);
+
+        // Clear input field and disable button again
+        document.querySelector('#task').value = '';
+        document.querySelector('#submit').disabled = true;
+
+        // Stop form from submitting
+        return false;
+    };
 
 });
