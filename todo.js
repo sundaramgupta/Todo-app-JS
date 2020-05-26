@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Enable button only if there is text in the input field
     document.querySelector('#task').onkeyup = () => {
-        document.querySelector('#submit').disabled = false;
+    	if (document.querySelector('#task').value.length > 0)
+        	document.querySelector('#submit').disabled = false;
+        else
+        	document.querySelector('#submit').disabled = true;
     };
 
     document.querySelector('#new-task').onsubmit = () => {
